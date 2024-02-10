@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 val Black = Color(0XFF333333)
 val White = Color(0xFFFFFFFF)
 val PrimaryBlue = Color(0xFF1846C7)
+val BrightBlue = Color(0xFF143AA4)
 val Blue24 = Color(0xFFC8D3F2)
 val Blue8 = Color(0xFFEDF0FB)
 val Pink = Color(0xFFEE215B)
