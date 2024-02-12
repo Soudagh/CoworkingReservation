@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CoworkingReservation</string>
+    <string name="room_info">Информация об аудитории</string>
+    <string name="room_name">Название аудитории</string>
+    <string name="capacity">Вместимость</string>
+    <string name="num_people">%1$s человек</string>
+    <string name="equipment">Оборудование</string>
+    <string name="in_stock">Есть</string>
+    <string name="days_before_reservation">За сколько дней разрешено бронирование</string>
+    <string name="day">%1$s дней</string>
+    <string name="responsible">Ответственный</string>
+    <string name="reserve">Забронировать</string>
+    <string name="reservation_info">Занятость помещения</string>
+    <string name="not_in_stock">Нет</string>
 </resources>
