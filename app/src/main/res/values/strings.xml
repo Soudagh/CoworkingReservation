@@ -12,4 +12,9 @@
     <string name="reserve">Забронировать</string>
     <string name="reservation_info">Занятость помещения</string>
     <string name="not_in_stock">Нет</string>
+    <string name="lomo_cowork">Коворкинг Ломоносова, 3 этаж</string>
+    <string name="kronv_cowork">Коворкинг Кронверкский, 3 этаж</string>
+    <string name="so_cowork">Коворкинг Студенческого Офиса</string>
+    <string name="yandex_portal">Портал в Яндекс</string>
+    <string name="birzha_rooms">Пространства на Биржевой</string>
 </resources>

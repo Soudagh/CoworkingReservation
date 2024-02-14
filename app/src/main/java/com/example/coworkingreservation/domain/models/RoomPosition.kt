@@ -14,9 +14,6 @@ import androidx.compose.ui.unit.Dp
  */
 @Immutable
 data class RoomPosition(
-    val x: Dp,
-    val y: Dp,
-    val height: Dp,
-    val width: Dp,
+    val vertex: Array<Pair<Dp, Dp>>,
     val roomInfo: UiMeetingRoomInfo
 )

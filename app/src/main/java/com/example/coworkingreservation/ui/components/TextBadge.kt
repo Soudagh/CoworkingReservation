@@ -1,11 +1,10 @@
 package com.example.coworkingreservation.ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,15 +21,16 @@ fun TextBadge(
     modifier: Modifier = Modifier
 ) {
     val dimensions = LocalDimensions.current
-    Box(
+    Button(
         modifier = modifier
             .wrapContentSize()
-            .clickable { onClick() }
-            .background(
-                color = White,
-                shape = RoundedCornerShape(dimensions.defaultCornerRadius)
-            )
-            .padding(dimensions.badgePadding)
+            .padding(dimensions.badgePadding),
+        shape = RoundedCornerShape(dimensions.defaultCornerRadius),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = White,
+            contentColor = Black
+        ),
+        onClick = onClick
     ) {
         Text(
             text = text,
