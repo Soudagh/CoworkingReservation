@@ -3,7 +3,6 @@ package com.example.coworkingreservation.ui.components.maps
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -17,11 +16,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.coworkingreservation.Floor
 import com.example.coworkingreservation.R
-import com.example.coworkingreservation.domain.models.RoomArea
+import com.example.coworkingreservation.domain.models.RoomPosition
 import com.example.coworkingreservation.domain.models.UiMeetingRoomInfo
 import com.example.coworkingreservation.ui.components.MeetingRoomInfoDialog
-import com.example.coworkingreservation.ui.screens.Floor
 
 @Composable
 fun Map(floor: Floor) {
@@ -39,10 +38,7 @@ fun Map(floor: Floor) {
     }
     val state = remember { mutableStateOf(false) }
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
+    Box(contentAlignment = Alignment.Center) {
         Image(
             imageVector = ImageVector.vectorResource(floor.image),
             contentDescription = null
@@ -74,7 +70,7 @@ fun Map(floor: Floor) {
 fun MapPreview() {
     Map(Floor(
         rooms = listOf(
-            RoomArea(
+            RoomPosition(
                 x = (-85).dp,
                 y = (-138).dp,
                 height = 40.dp,
@@ -90,7 +86,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = (-85).dp,
                 y = (-98).dp,
                 height = 40.dp,
@@ -106,7 +102,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = (-85).dp,
                 y = (-60).dp,
                 height = 35.dp,
@@ -122,7 +118,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = (-62).dp,
                 y = 25.dp,
                 height = 45.dp,
@@ -138,7 +134,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = (-98).dp,
                 y = 25.dp,
                 height = 45.dp,
@@ -154,7 +150,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = (-133).dp,
                 y = 25.dp,
                 height = 45.dp,
@@ -170,7 +166,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = 87.dp,
                 y = 80.dp,
                 height = 164.dp,
@@ -186,7 +182,7 @@ fun MapPreview() {
                     responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
                 )
             ),
-            RoomArea(
+            RoomPosition(
                 x = (-45).dp,
                 y = (126).dp,
                 height = 78.dp,
