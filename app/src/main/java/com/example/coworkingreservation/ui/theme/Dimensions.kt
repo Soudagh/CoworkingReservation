@@ -21,7 +21,8 @@ data class Dimensions(
     val horizontalSmall: Dp = 8.dp,
     val defaultPadding: Dp = 25.dp,
     val fieldsSpacer: Dp = 4.dp,
-    val dropDownMenuMinHeight: Dp = 40.dp
+    val dropDownMenuMinHeight: Dp = 40.dp,
+    val textCardPadding: Dp = 16.dp
 )
 
 val LocalDimensions = compositionLocalOf { Dimensions() }
