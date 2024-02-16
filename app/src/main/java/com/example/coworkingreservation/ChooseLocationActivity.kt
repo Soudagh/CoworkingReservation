@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -85,11 +86,11 @@ fun Menu(modifier: Modifier = Modifier) {
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.arrow_left),
-                        contentDescription = "Open portal",
+                        contentDescription = null,
                         modifier = Modifier.size(24.dp)
                     )
                     Text(
-                        text = "Назад",
+                        text = stringResource(id = R.string.back),
                         color = Color(0xFF1846C7),
                         fontSize = 16.sp
                     )
@@ -97,7 +98,7 @@ fun Menu(modifier: Modifier = Modifier) {
             }
 
             Text(
-                text = "Выбор коворкинга",
+                text = stringResource(id = R.string.choose_coworking_location),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 48.dp),
@@ -119,10 +120,10 @@ fun Menu(modifier: Modifier = Modifier) {
         ) {
             items(
                 items = listOf(
-                    "Коворкинг Кронверкский",
-                    "Коворкинг Ломоносова",
-                    "Коворкинг Студенческого Офиса",
-                    "Портал в Яндекс"
+                    R.string.kronv_cowork,
+                    R.string.lomo_cowork,
+                    R.string.so_cowork,
+                    R.string.yandex_portal
                 )
             ) { item ->
                 Row(
@@ -135,7 +136,7 @@ fun Menu(modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = item,
+                        text = stringResource(item),
                         modifier = Modifier
                             .wrapContentSize()
                             .padding(start = 16.dp),
@@ -147,10 +148,9 @@ fun Menu(modifier: Modifier = Modifier) {
                         modifier = Modifier.padding(end = 16.dp),
                     ) {
                         Image(
-
+                            contentDescription = null,
                             modifier = Modifier.size(32.dp),
                             painter = painterResource(id = R.drawable.go_to_map_button),
-                            contentDescription = "Open portal",
                         )
                         }
 
