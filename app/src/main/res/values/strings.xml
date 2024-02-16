@@ -17,4 +17,10 @@
     <string name="so_cowork">Коворкинг Студенческого Офиса</string>
     <string name="yandex_portal">Портал в Яндекс</string>
     <string name="birzha_rooms">Пространства на Биржевой</string>
+
+    //Выбор коворкинга
+    <string name="back">Назад</string>
+    <string name="choose_coworking_location">Выбор коворкинга</string>
+
+
 </resources>
