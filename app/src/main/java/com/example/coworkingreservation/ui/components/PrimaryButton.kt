@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.coworkingreservation.ui.theme.BrightBlue
 import com.example.coworkingreservation.ui.theme.LocalDimensions
 import com.example.coworkingreservation.ui.theme.PrimaryBlue
-import com.example.coworkingreservation.ui.theme.SemiBoldOpenSans16
+import com.example.coworkingreservation.ui.theme.SemiBoldOpenSans14
 import com.example.coworkingreservation.ui.theme.White
 
 @Composable
@@ -51,7 +51,7 @@ fun PrimaryButton(
         Spacer(modifier = Modifier.width(dimensions.horizontalTiny))
         Text(
             text = text,
-            style = SemiBoldOpenSans16
+            style = SemiBoldOpenSans14
         )
         Spacer(modifier = Modifier.width(dimensions.horizontalTiny))
         rightIcon?.let { icon ->

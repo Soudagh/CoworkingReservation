@@ -56,8 +56,10 @@ private val SemiBoldOpenSansStyle = TextStyle(
 val RegularOpenSans16 = RegularOpenSansStyle.copy(fontSize = 16.sp)
 val RegularOpenSans14 = RegularOpenSansStyle.copy(fontSize = 14.sp)
 
+val SemiBoldOpenSans18 = SemiBoldOpenSansStyle.copy(fontSize = 18.sp)
 val SemiBoldOpenSans16 = SemiBoldOpenSansStyle.copy(fontSize = 16.sp)
 val SemiBoldOpenSans14 = SemiBoldOpenSansStyle.copy(fontSize = 14.sp)
+val SemiBoldOpenSans12 = SemiBoldOpenSansStyle.copy(fontSize = 12.sp)
 
 val BoldOpenSans14 = BoldOpenSansStyle.copy(fontSize = 14.sp)
 val BoldOpenSans16 = BoldOpenSansStyle.copy(fontSize = 16.sp)
