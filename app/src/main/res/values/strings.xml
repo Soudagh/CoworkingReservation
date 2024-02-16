@@ -21,6 +21,9 @@
     //Выбор коворкинга
     <string name="back">Назад</string>
     <string name="choose_coworking_location">Выбор коворкинга</string>
+    <string name="date_format">ДД.ММ.ГГГГ</string>
+    <string name="date_error_text">Неверный формат даты</string>
+    <string name="limit_of_max_char">Максимальное количество символов</string>
 
 
 </resources>

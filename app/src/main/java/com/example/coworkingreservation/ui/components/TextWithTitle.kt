@@ -10,7 +10,7 @@ import com.example.coworkingreservation.ui.theme.Black
 import com.example.coworkingreservation.ui.theme.Gray60
 import com.example.coworkingreservation.ui.theme.LocalDimensions
 import com.example.coworkingreservation.ui.theme.RegularOpenSans14
-import com.example.coworkingreservation.ui.theme.SemiBoldOpenSans12
+import com.example.coworkingreservation.ui.theme.SemiBoldOpenSans14
 
 @Composable
 fun TextWithTitle(
@@ -25,7 +25,7 @@ fun TextWithTitle(
     ) {
         Text(
             text = titleText,
-            style = SemiBoldOpenSans12,
+            style = SemiBoldOpenSans14,
             color = Black
         )
         Text(
