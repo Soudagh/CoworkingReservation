@@ -1,4 +1,4 @@
-package com.example.coworkingreservation.ui.components.maps
+package com.example.coworkingreservation.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -25,7 +25,6 @@ import com.example.coworkingreservation.Floor
 import com.example.coworkingreservation.R
 import com.example.coworkingreservation.domain.models.RoomPosition
 import com.example.coworkingreservation.domain.models.UiMeetingRoomInfo
-import com.example.coworkingreservation.ui.components.MeetingRoomInfoDialog
 import com.example.coworkingreservation.ui.theme.PrimaryBlue
 
 @Composable
@@ -74,7 +73,10 @@ fun Map(floor: Floor) {
                                     val maxY = mapY.max() + screenCenterY
                                     val maxX = mapX.max() + screenCenterX
 
-                                    if ((minX.toPx() <= tapOffset.x && maxX.toPx() >= tapOffset.x) && (minY.toPx() <= tapOffset.y && maxY.toPx() >= tapOffset.y)) {
+                                    if (
+                                        (minX.toPx() <= tapOffset.x && maxX.toPx() >= tapOffset.x)
+                                        && (minY.toPx() <= tapOffset.y && maxY.toPx() >= tapOffset.y)
+                                    ) {
                                         roomInfo = room.roomInfo
                                         state.value = true
                                         break

@@ -14,8 +14,10 @@ data class Dimensions(
     val verticalDialog: Dp = 20.dp,
     val iconDefaultSize: Dp = 24.dp,
     val verticalTiny: Dp = 4.dp,
+    val verticalSmall: Dp = 15.dp,
     val verticalMedium: Dp = 40.dp,
-    val badgePadding: Dp = 10.dp
+    val badgePadding: Dp = 10.dp,
+    val defaultPadding: Dp = 15.dp
 )
 
 val LocalDimensions = compositionLocalOf { Dimensions() }

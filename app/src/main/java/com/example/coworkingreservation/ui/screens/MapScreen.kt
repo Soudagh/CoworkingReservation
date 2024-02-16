@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.coworkingreservation.R
 import com.example.coworkingreservation.config
 import com.example.coworkingreservation.ui.components.TextBadge
-import com.example.coworkingreservation.ui.components.maps.Map
+import com.example.coworkingreservation.ui.components.Map
 import com.example.coworkingreservation.ui.theme.Gray12
 import com.example.coworkingreservation.ui.theme.LocalDimensions
 
