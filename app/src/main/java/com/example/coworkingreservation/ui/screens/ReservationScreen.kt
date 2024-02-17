@@ -19,7 +19,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.coworkingreservation.R
 import com.example.coworkingreservation.domain.models.MeetingRoomViewModel
-import com.example.coworkingreservation.domain.models.UiMeetingRoomInfo
 import com.example.coworkingreservation.ui.components.CustomDropDown
 import com.example.coworkingreservation.ui.components.DateInput
 import com.example.coworkingreservation.ui.components.PrimaryButton
@@ -39,6 +38,9 @@ fun ReservationScreen(
     var longDate by remember { mutableLongStateOf(0L) }
     var stringDate by remember { mutableStateOf("") }
     var eventName by remember {mutableStateOf("")}
+    var members by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("")}
+    var extra by remember { mutableStateOf("") }
     var periodTimes by remember { mutableStateOf("Разовое") }
     var periodDays by remember { mutableStateOf("Каждый день") }
 
@@ -59,15 +61,12 @@ fun ReservationScreen(
             )
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             DateInput(
-                onDateSelected = { dateInMillis, dateInString ->
-                    longDate = dateInMillis
-                    stringDate = dateInString
-                },
                 titleText = "Дата бронирования"
             )
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             PrimaryTextField(
                 onTextChange = { eventName = it },
+                value = eventName,
                 title = "Название мероприятия",
                 placeholder = "Введите название мероприятия",
                 minLines = 1,
@@ -76,14 +75,17 @@ fun ReservationScreen(
             //Сделать TimeRangePicker
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             PrimaryTextField(
-                onTextChange = {},
+                onTextChange = {members = it},
+                value = members,
                 title = "Количество человек",
+                placeholder = "Введите количество",
                 maxLines = 1,
                 isOnlyNumbers = true
             )
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             PrimaryTextField(
-                onTextChange = {},
+                onTextChange = {phone = it},
+                value = phone,
                 title = "Контактный телефон",
                 placeholder = "+X (XXX) XXXXXXX",
                 maxLines = 1,
@@ -91,9 +93,10 @@ fun ReservationScreen(
             )
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             PrimaryTextField(
-                onTextChange = { eventName = it },
+                onTextChange = { extra = it },
+                value = extra,
                 title = "Дополнительно",
-                placeholder = "Введите название мероприятия",
+                placeholder = "Дополнительные данные",
                 minLines = 1,
             )
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
@@ -131,14 +134,4 @@ fun ReservationScreen(
 @Preview
 @Composable
 fun ReservationScreenPreview() {
-    val roomInfo = UiMeetingRoomInfo(
-        id = "1",
-        capacity = 80,
-        classroom = "1301/8",
-        classroomName = "Медиазона",
-        daysOrderBefore = 0,
-        isEquipment = true,
-        occupation = listOf(),
-        responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
-    )
 }
