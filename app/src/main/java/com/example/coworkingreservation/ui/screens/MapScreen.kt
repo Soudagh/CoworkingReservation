@@ -13,20 +13,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.coworkingreservation.R
 import com.example.coworkingreservation.config
+import com.example.coworkingreservation.domain.models.MeetingRoomViewModel
 import com.example.coworkingreservation.ui.components.TextBadge
 import com.example.coworkingreservation.ui.components.Map
+import com.example.coworkingreservation.ui.navigation.Graph
 import com.example.coworkingreservation.ui.theme.Gray12
 import com.example.coworkingreservation.ui.theme.LocalDimensions
 
 
 @Composable
-fun MapScreen(mapId: Int) {
+fun MapScreen(
+    navHostController: NavHostController,
+    mapId: Int,
+    meetingRoomViewModel: MeetingRoomViewModel
+) {
     var textBadge by remember { mutableStateOf("") }
     val dimensions = LocalDimensions.current
 
-    when(mapId) {
+    when (mapId) {
         1 -> textBadge = stringResource(R.string.lomo_cowork)
         2 -> textBadge = stringResource(R.string.kronv_cowork)
         3 -> textBadge = stringResource(R.string.so_cowork)
@@ -40,13 +48,19 @@ fun MapScreen(mapId: Int) {
             .background(color = Gray12),
         contentAlignment = Alignment.Center
     ) {
-        config[mapId]?.let { Map(it) }
+        config[mapId]?.let {
+            Map(
+                floor = it,
+                navHostController = navHostController,
+                meetingRoomViewModel = meetingRoomViewModel
+            )
+        }
         TextBadge(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(dimensions.badgePadding),
             text = textBadge,
-            onClick = {}
+            onClick = { navHostController.navigate(Graph.ROOT) }
         )
     }
 }
@@ -55,5 +69,9 @@ fun MapScreen(mapId: Int) {
 @Preview
 @Composable
 fun MapScreenPreview() {
-    MapScreen(mapId = 1)
+    MapScreen(
+        navHostController = rememberNavController(),
+        mapId = 1,
+        meetingRoomViewModel = MeetingRoomViewModel()
+    )
 }

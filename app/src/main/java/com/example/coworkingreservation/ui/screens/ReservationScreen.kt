@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
@@ -17,7 +16,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.coworkingreservation.R
+import com.example.coworkingreservation.domain.models.MeetingRoomViewModel
 import com.example.coworkingreservation.domain.models.UiMeetingRoomInfo
 import com.example.coworkingreservation.ui.components.CustomDropDown
 import com.example.coworkingreservation.ui.components.DateInput
@@ -27,9 +28,13 @@ import com.example.coworkingreservation.ui.components.TextWithTitle
 import com.example.coworkingreservation.ui.components.ToolBar
 import com.example.coworkingreservation.ui.theme.LocalDimensions
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReservationScreen(roomInfo: UiMeetingRoomInfo) {
+fun ReservationScreen(
+    navHostController: NavHostController,
+    onNavigateUp: () -> Unit,
+    meetingRoomViewModel: MeetingRoomViewModel
+) {
+    val roomInfo = meetingRoomViewModel.roomInfo
     val dimensions = LocalDimensions.current
     var longDate by remember { mutableLongStateOf(0L) }
     var stringDate by remember { mutableStateOf("") }
@@ -41,17 +46,16 @@ fun ReservationScreen(roomInfo: UiMeetingRoomInfo) {
     val days = listOf("Каждый день", "Каждую неделю", "Через неделю")
 
     Column {
-        ToolBar(titleText = "Бронирование", onNavigationIconClick = {})
+        ToolBar(titleText = "Бронирование", onNavigationIconClick = onNavigateUp)
         Column(
             modifier = Modifier
                 .padding(horizontal = dimensions.defaultPadding)
                 .verticalScroll(rememberScrollState())
         ) {
-
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             TextWithTitle(
                 titleText = stringResource(R.string.room_name),
-                bodyText = "${roomInfo.classroom} \"${roomInfo.classroomName}\""
+                bodyText = "${roomInfo?.classroom} \"${roomInfo?.classroomName}\""
             )
             Spacer(modifier = Modifier.height(dimensions.verticalSmall))
             DateInput(
@@ -137,6 +141,4 @@ fun ReservationScreenPreview() {
         occupation = listOf(),
         responsible = listOf("Фамилия Имя Отчество", "Фамилия Имя Отчество")
     )
-
-    ReservationScreen(roomInfo = roomInfo)
 }

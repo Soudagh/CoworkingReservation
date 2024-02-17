@@ -1,6 +1,5 @@
 package com.example.coworkingreservation.ui.components
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -13,22 +12,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.coworkingreservation.Floor
 import com.example.coworkingreservation.R
+import com.example.coworkingreservation.domain.models.MeetingRoomViewModel
 import com.example.coworkingreservation.domain.models.RoomPosition
 import com.example.coworkingreservation.domain.models.UiMeetingRoomInfo
-import com.example.coworkingreservation.ui.theme.PrimaryBlue
+import com.example.coworkingreservation.ui.navigation.Graph
 
 @Composable
-fun Map(floor: Floor) {
+fun Map(
+    floor: Floor,
+    navHostController: NavHostController,
+    meetingRoomViewModel: MeetingRoomViewModel
+) {
     var roomInfo by remember {
         mutableStateOf(
             UiMeetingRoomInfo(
@@ -58,8 +62,7 @@ fun Map(floor: Floor) {
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val height = maxHeight
             val width = maxWidth
-
-            Canvas(
+            Box(
                 modifier = Modifier
                     .pointerInput(width, height) {
                         detectTapGestures(
@@ -88,26 +91,7 @@ fun Map(floor: Floor) {
                     }
                     .align(Alignment.Center)
                     .fillMaxSize(),
-            ) {
-                for (room in floor.rooms) {
-
-                    val path = Path()
-                    val startPair = room.vertex[0]
-                    path.moveTo(
-                        (screenCenterX + startPair.first).toPx(),
-                        (screenCenterY + startPair.second).toPx()
-                    )
-                    for (i in 1 until room.vertex.size) {
-                        val cord = room.vertex[i]
-                        path.lineTo(
-                            (screenCenterX + cord.first).toPx(),
-                            (screenCenterY + cord.second).toPx()
-                        )
-                    }
-                    path.close()
-                    drawPath(path, PrimaryBlue, style = Stroke(width = 0f))
-                }
-            }
+            )
         }
     }
 
@@ -115,7 +99,11 @@ fun Map(floor: Floor) {
     if (state.value) {
         MeetingRoomInfoDialog(
             roomInfo = roomInfo,
-            onReservationClick = {},
+            onReservationClick = {
+                meetingRoomViewModel.addRoomInfo(roomInfo)
+                navHostController.navigate(Graph.RESERVATION)
+                state.value = false
+            },
             onReservedClick = {},
             onDismiss = { state.value = false })
     }
@@ -125,7 +113,9 @@ fun Map(floor: Floor) {
 @Composable
 fun MapPreview() {
     Map(
-        Floor(
+        meetingRoomViewModel = MeetingRoomViewModel(),
+        navHostController = rememberNavController(),
+        floor = Floor(
             rooms = listOf(
                 RoomPosition(
                     vertex = arrayOf(
